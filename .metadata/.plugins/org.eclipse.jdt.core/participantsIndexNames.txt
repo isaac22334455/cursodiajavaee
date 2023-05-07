@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\elian\Documents\javaee\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1662070576.index
+\Tiendavideojuegos\src\main\java
