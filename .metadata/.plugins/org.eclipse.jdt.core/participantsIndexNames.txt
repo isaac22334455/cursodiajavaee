@@ -1,3 +1,7 @@
-INDEX VERSION 1.131
-C:\Users\elian\Documents\javaee\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1662070576.index
-\Tiendavideojuegos\src\main\java
+INDEX VERSION 1.132
+/home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3652762060.index
+/TiendaVid/src/main/java
+/home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3899554789.index
+/TiendaVid/src/main/java
+/home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2389642842.index
+/Tiendavideojuegos/src/main/java
