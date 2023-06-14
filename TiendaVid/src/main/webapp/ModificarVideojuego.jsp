@@ -4,7 +4,6 @@
 <%@ page import="com.cursodia.javaee.beans.Videojuego"%>
 
 <%
-System.out.print(request.getParameter("cvep"));
    //extraer valores del form
    int cve= Integer.parseInt(request.getParameter("cve"));
    String titulo =request.getParameter("tit");
@@ -12,6 +11,6 @@ System.out.print(request.getParameter("cvep"));
    int cvep = Integer.parseInt(request.getParameter("cvep"));
    int inventario=Integer.parseInt(request.getParameter("inv"));
    
-   Videojuego.insertar(cve, titulo, precio, cvep, inventario);
+   Videojuego.actuaizarVideojuego(cve,titulo, precio, cvep, inventario);
    response.sendRedirect("mostrarvideojuegos.jsp");
  %>

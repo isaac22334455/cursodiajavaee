@@ -2,12 +2,15 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="TiendaVid"/>
 			<item value="Tiendavideojuegos"/>
 		</list>
 		<list key="name">
+			<item value="TiendaVid"/>
 			<item value="Tienda de videojuegos"/>
 		</list>
 		<list key="artifactId">
+			<item value="TiendaVid"/>
 			<item value="Tiendavideojuegos"/>
 		</list>
 		<list key="version">
@@ -15,6 +18,14 @@
 		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.dependencies">
 	</section>

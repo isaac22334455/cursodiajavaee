@@ -1,36 +1,10 @@
-@charset "UTF-8";
-body
-{
-	font-family: Helvetica, Arial, sans-serif;
-	background-color:rgb( 52, 73, 94 );
-	text-align: center;
+	@charset "UTF-8";
+	body
+	{
+	background: rgb(56,55,60);
+	background: radial-gradient(circle, rgba(56,55,60,1) 0%, rgba(39,12,48,1) 100%);
 	color:white;
-}
-form
-{
-	border-radius:10px;
-	margin-left:320px;
-	width: 600px;
-	background-color:rgb(  25, 46, 67 );
-}
+	
+	}
+	
 
-input
-{
-	margin:10px;
-	width: 200px;
-	height: 30px;
-}
-button
-{
-	font-size: 18px;
-	color:white;
-	font-family: Helvetica, Arial, sans-serif;
-    border-width: 2px;
-	border-style: solid;
-	border-color: rgb(  25, 46, 67 );
-	border-radius:20px;
-	width: 150px;
-	height: 50px;
-	background-color:rgb( 205, 203, 26 );
-	margin-bottom:10px;
-}
