@@ -18,7 +18,7 @@ public class DatabaseHlper
 	private static final String Usuario="root";
 	private static final String Clave="";
 	
-	public int modificarVideojuego(String query) throws SQLException
+	public int modificarVideojuego(String query) throws SQLException, DataBaseException
 	{
 		  Connection con=null;
 		  Statement stm =null;
@@ -33,10 +33,12 @@ public class DatabaseHlper
 		 }catch(ClassNotFoundException e)
 		   {
 		 	  System.out.println("error al cargar: "+e.getMessage()); 
+		 	  throw new DataBaseException("error al cargar la clase",e);
 		   }
 		   catch(SQLException e)
 		   {
 		 	   System.out.println("error al acceder"+e.getMessage()); 
+		 	  throw new DataBaseException("error de SQL",e);
 		   }
 		   finally
 		   {
@@ -46,7 +48,7 @@ public class DatabaseHlper
 		return filas;
 	}
 	
-	public List<Videojuego> seleccionarvideojuego(String query)throws SQLException
+	public List<Videojuego> seleccionarvideojuego(String query)throws SQLException, DataBaseException
 	{
 		   Connection con = null;
 		   Statement stm = null;
@@ -65,21 +67,23 @@ public class DatabaseHlper
 		    }
 		   }catch(ClassNotFoundException e)
 		   {
-		 	  System.out.println("error al cargar"+e.getMessage()); 
+		 	  System.out.println("error al cargar: "+e.getMessage()); 
+		 	  throw new DataBaseException("error al cargar la clase",e);
 		   }
 		   catch(SQLException e)
 		   {
 		 	   System.out.println("error al acceder"+e.getMessage()); 
+		 	  throw new DataBaseException("error de SQL",e);
 		   }
-		   
+		   finally
 		   {
-		 	 if(stm != null)stm.close();
-		 	   if(con != null)con.close(); 
+		 	   //if(stm != null)stm.close();
+		 	   //if(con != null)con.close(); 
 		   }
 		   return lista;	  
 	}
 	
-	public List<Videojuego> seleccionarvideojuegos(String query)throws SQLException
+	public List<Videojuego> seleccionarvideojuegos(String query)throws SQLException, DataBaseException
 	{
 		   Connection con = null;
 		   Statement stm = null;
@@ -98,16 +102,18 @@ public class DatabaseHlper
 		    }
 		   }catch(ClassNotFoundException e)
 		   {
-		 	  System.out.println("error al cargar"+e.getMessage()); 
+		 	  System.out.println("error al cargar: "+e.getMessage()); 
+		 	  throw new DataBaseException("error al cargar la clase",e);
 		   }
 		   catch(SQLException e)
 		   {
 		 	   System.out.println("error al acceder"+e.getMessage()); 
+		 	  throw new DataBaseException("error de SQL",e);
 		   }
-		   
+		   finally
 		   {
-		 	 if(stm != null)stm.close();
-		 	   if(con != null)con.close(); 
+		 	   //if(stm != null)stm.close();
+		 	   //if(con != null)con.close(); 
 		   }
 		   return lista;	  
 	}

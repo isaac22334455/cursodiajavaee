@@ -1,7 +1,9 @@
 INDEX VERSION 1.132
+/home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3652762060.index
+/TiendaVid/src/main/java
+/home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2389642842.index
+/Tiendavideojuegos/src/main/java
 /home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3652762060.index
 /TiendaVid/src/main/java
 /home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3899554789.index
 /TiendaVid/src/main/java
-/home/isaac/Documentos/cursodiajavaee/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2389642842.index
-/Tiendavideojuegos/src/main/java

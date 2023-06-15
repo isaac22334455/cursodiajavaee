@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.cursodia.javaee.DBH.DataBaseException;
 import com.cursodia.javaee.DBH.DatabaseHlper;
 public class Videojuego 
 {
@@ -76,14 +77,14 @@ public class Videojuego
 	//	DatabaseHlper dbh = new DatabaseHlper();
 	//	return dbh.seleccionarvideojuegos(query);	
 	//}
-	public static void insertar(int cve,String titulo,float precio,int cvep, int inv) throws SQLException
+	public static void insertar(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
 	{
-		 String query = "INSERT INTO videojuegos(cve_vid,tit_vid,pre_vid,cveprov_vid,inv_vid) VALUES ";
+		 String query = "INSERT INTO videojuegos(cve_vid,tit_vid,pre_vid,cveprov_vid,inv_vid,d) VALUES ";
 		 query +="("+cve+",'"+titulo+"',"+precio+","+cvep+","+inv+")";
 		 DatabaseHlper dbh = new DatabaseHlper();
 		 dbh.modificarVideojuego(query);
 	}
-	public static List<Videojuego> buscartodos() throws SQLException
+	public static List<Videojuego> buscartodos() throws SQLException, DataBaseException
 	{
 		String query = "SELECT a.cve_vid,a.tit_vid, b.nom_prov provedor,a.pre_vid,a.inv_vid FROM videojuegos a INNER JOIN proveedores b ON a.cveprov_vid = b.cve_prov ";
 		
@@ -112,7 +113,7 @@ public class Videojuego
 		}	   
 	}
 	
-	public static int actuaizarVideojuego(int cve,String titulo,float precio,int cvep, int inv) throws SQLException
+	public static int actuaizarVideojuego(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
 	{
 		String query="UPDATE videojuegos SET tit_vid='"+titulo+"',pre_vid="+precio+",cveprov_vid="+cvep+",inv_vid="+inv+" WHERE cve_vid="+cve+"";
 		DatabaseHlper dbh = new DatabaseHlper();
