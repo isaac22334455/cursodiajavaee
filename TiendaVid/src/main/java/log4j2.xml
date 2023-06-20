@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="DEBUG">
+	<Appenders>
+	<Console name="LogToConsole" target="SYSTEM_OUT"><!-- el name puede ser el que se quiera -->
+	   <PatternLayout pattern="%%d{HH:mm:ss.SSS}[%t] %-5level %logger{36} - %msg%n"></PatternLayout>
+	</Console>
+	<File name="LogToFIle" fileName="Logs/app.Log">
+        <PatternLayout >
+           <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+        </PatternLayout>	
+	</File>
+	</Appenders>
+	<Loggers><!-- fuentes de donde puede surgir el error -->
+	   
+	    <Logger name="com.cursodia.javaee.DBH" level="debug" additivity="false"><!-- additivity false es para que cada que arranque otra vez el servidor agregue los errores pasados -->
+	     <AppenderRef ref="LogToFIle"></AppenderRef>
+	     <AppenderRef ref="LogToConsole"></AppenderRef>
+	    </Logger>
+	    
+	    <Logger name="org.springframework.boot" level="error" additivity="false"><!-- additivity false es para que cada que arranque otra vez el servidor agregue los errores pasados -->
+	     <AppenderRef ref="LogToConsole"></AppenderRef>
+	    
+	    </Logger>
+	    <Root level="error">
+	     <AppenderRef ref="LogToFIle"></AppenderRef>
+	     <AppenderRef ref="LogToConsole"></AppenderRef>
+	    </Root>
+	</Loggers>
+	
+</configuration>

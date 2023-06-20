@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
   <display-name>TiendaVid</display-name>
-  <error-page>
+  <error-page><!-- redirigue a la pagina de error -->
   <exception-type>java.lang.RuntimeException</exception-type>
   <location>/error.jsp</location>
   </error-page>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>mostrarvideojuegos.jsp</welcome-file>
+    <welcome-file>mostrarvideojuegos.do</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>mostrarvideojuegos.jsp</welcome-file>
+    <welcome-file>mostrarvideojuegos.do</welcome-file>
   </welcome-file-list>
+  <servlet>
+  		<servlet-name>ControladorVideojuegos</servlet-name>
+  		<servlet-class>com.cursodia.javaee.controlador.ControladorVideojuegos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>ControladorVideojuegos</servlet-name>
+  <url-pattern>*.do</url-pattern><!-- todos los que marquen un .do pasaran por ese controlador -->
+  </servlet-mapping>
+  
 </web-app>

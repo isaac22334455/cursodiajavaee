@@ -3,7 +3,6 @@
 <%@ page import="com.cursodia.javaee.beans.Videojuego"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Objects"%>
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html =lang "es">
@@ -50,7 +49,7 @@
 	          <label for="prov">PROVEEDOR:</label><br>
 	          <select class="form-select" name="cvep"id="cvep">
 	            <% 
-	            List<Proveedor> lista = Proveedor.buscarProvedorCveName();
+	            List<Proveedor> lista = (List<Proveedor>)request.getAttribute("listaprovedores");
 	              for (Proveedor v:lista)
 	              { %>
 	                <option value="<%= v.getCve_prov() %>"><%= v.getNom_prov()%></option>   
@@ -66,14 +65,14 @@
 	        </div>
 	      </div>
 	    </div>
-	    <button type="button" onclick="validacion()"class="btn btn-dark">ACEPTAR</button>
+	    <button type="submit"class="btn btn-dark">ACEPTAR</button>
 	  </form>
 	</div> 
  <%}
  else
  {
-	 int cve= Integer.parseInt(clave);
-	 Videojuego v=Videojuego.seleccionarvid(cve);
+	 //int cve= Integer.parseInt(clave);
+	 Videojuego v=(Videojuego)request.getAttribute("vid");
 	 %> 
 	 <div class="container">
 	  <h1 class="mt-5">FORMULARIO ALTA VIDEOJUEGOS</h1>
@@ -83,19 +82,19 @@
 	      <div class="col-md-4">
 	        <div class="form-group">
 	          <label for="cve">CLAVE:</label><br>
-	          <input type="text" id="cve" name="cve"value="<%= v.getCve_vid() %>" class="form-control"><br>
+	          <input type="text" id="cve" name="cve"value="<%= v.getcve_vid() %>" class="form-control"><br>
 	        </div>
 	      </div>
 	      <div class="col-md-4">
 	        <div class="form-group">
 	          <label for="tit">TITULO:</label><br>
-	          <input type="text" id="tit" name="tit"value="<%= v.getTit_vid() %>" class="form-control"><br>
+	          <input type="text" id="tit" name="tit"value="<%= v.gettit_vid() %>" class="form-control"><br>
 	        </div>
 	      </div>
 	      <div class="col-md-4">
 	        <div class="form-group">
 	          <label for="pre">PRECIO:</label><br>
-	          <input type="number" id="pre" name="pre" value="<%= v.getPre_vid() %>"class="form-control"><br>
+	          <input type="number" id="pre" name="pre" value="<%= v.getpre_vid() %>"class="form-control"><br>
 	        </div>
 	      </div>
 	    </div>
@@ -105,17 +104,17 @@
 	          <label for="prov">PROVEEDOR:</label><br>
 	          <select class="form-select" name="cvep"id="cvep">
 	                 <% 
-	            List<Proveedor> lista = Proveedor.buscarProvedorCveName();
+	            List<Proveedor> lista = (List<Proveedor>)request.getAttribute("listaprovedores");
 	              for (Proveedor v2:lista)
 	              { 
-	                 if(v2.getCve_prov()==v.getCveprov_vid())
+	                 if(v2.getCve_prov()==v.getcveprov_vid())
 	                 {%>
 	                	 <option value="<%= v2.getCve_prov()%>"><%= v2.getNom_prov()%></option>  
 	                 <%}
 	                  
 	               }
 	              for (Proveedor v2 : lista) {
-	            	    if (v2.getCve_prov() != v.getCveprov_vid()) { // Ignorar la coincidencia previa
+	            	    if (v2.getCve_prov() != v.getcveprov_vid()) { // Ignorar la coincidencia previa
 	            	  %>
 	            	      <option value="<%= v2.getCve_prov() %>"><%= v2.getNom_prov() %></option>  
 	            	  <% }
@@ -127,11 +126,11 @@
 	      <div class="col-md-6">
 	        <div class="form-group">
 	          <label for="inv">INVENTARIO:</label><br>
-	          <input type="text" id="inv" name="inv"value="<%= v.getInv_vid() %>" class="form-control"><br><br>
+	          <input type="text" id="inv" name="inv"value="<%= v.getinv_vid() %>" class="form-control"><br><br>
 	        </div>
 	      </div>
 	    </div>
-	    <button type="button" onclick="validacion2()"class="btn btn-dark">ACEPTAR</button>
+	    <button type="submit" class="btn btn-dark">ACEPTAR</button>
 	  </form>
 	</div> 
  <%}

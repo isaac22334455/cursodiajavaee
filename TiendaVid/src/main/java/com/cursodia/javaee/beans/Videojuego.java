@@ -14,7 +14,7 @@ public class Videojuego
 	private int cveprov_vid;
 	private int inv_vid;
 	
-	private String nomprov_vid;
+	private String provedor;
 	
 	public Videojuego()
 	{}	
@@ -27,46 +27,50 @@ public class Videojuego
 		this.inv_vid = inv_vid;
 	}
 	
-	public Videojuego(int cve_vid, String tit_vid, float pre_vid,String nomprov_vid, int inv_vid) 
+	public Videojuego(int cve_vid, String tit_vid, float pre_vid,String provedor, int inv_vid) 
 	{
 		this.cve_vid = cve_vid;
 		this.tit_vid = tit_vid;
 		this.pre_vid = pre_vid;		
 		this.inv_vid = inv_vid;
-		this.nomprov_vid=nomprov_vid;
+		this.provedor=provedor;
 	}
 	
-	public String getNomprov_vid() {
-		return nomprov_vid;
+	
+	public void setcve_vid(int cve_vid) {
+		this.cve_vid = cve_vid;
 	}
-	public void setNomprov_vid(String nomprov_vid) {
-		this.nomprov_vid = nomprov_vid;
+	public String getprovedor() {
+		return provedor;
 	}
-	public String getTit_vid() {
+	public void setprovedor(String provedor) {
+		this.provedor = provedor;
+	}
+	public String gettit_vid() {
 		return tit_vid;
 	}
-	public void setTit_vid(String tit_vid) {
+	public void settit_vid(String tit_vid) {
 		this.tit_vid = tit_vid;
 	}
-	public float getPre_vid() {
+	public float getpre_vid() {
 		return pre_vid;
 	}
-	public void setPre_vid(float pre_vid) {
+	public void setpre_vid(float pre_vid) {
 		this.pre_vid = pre_vid;
 	}
-	public int getCveprov_vid() {
+	public int getcveprov_vid() {
 		return cveprov_vid;
 	}
-	public void setCveprov_vid(int cveprov_vid) {
+	public void setcveprov_vid(int cveprov_vid) {
 		this.cveprov_vid = cveprov_vid;
 	}
-	public int getInv_vid() {
+	public int getinv_vid() {
 		return inv_vid;
 	}
-	public void setInv_vid(int inv_vid) {
+	public void setinv_vid(int inv_vid) {
 		this.inv_vid = inv_vid;
 	}
-	public int getCve_vid() {
+	public int getcve_vid() {
 		return cve_vid;
 	}
 	
@@ -79,17 +83,19 @@ public class Videojuego
 	//}
 	public static void insertar(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
 	{
-		 String query = "INSERT INTO videojuegos(cve_vid,tit_vid,pre_vid,cveprov_vid,inv_vid,d) VALUES ";
+		 String query = "INSERT INTO videojuegos(cve_vid,tit_vid,pre_vid,cveprov_vid,inv_vid) VALUES ";
 		 query +="("+cve+",'"+titulo+"',"+precio+","+cvep+","+inv+")";
 		 DatabaseHlper dbh = new DatabaseHlper();
 		 dbh.modificarVideojuego(query);
 	}
 	public static List<Videojuego> buscartodos() throws SQLException, DataBaseException
 	{
-		String query = "SELECT a.cve_vid,a.tit_vid, b.nom_prov provedor,a.pre_vid,a.inv_vid FROM videojuegos a INNER JOIN proveedores b ON a.cveprov_vid = b.cve_prov ";
+		String query ="SELECT a.cve_vid, a.tit_vid, b.nom_prov provedor, a.pre_vid, a.inv_vid, a.cveprov_vid FROM videojuegos a INNER JOIN proveedores b ON a.cveprov_vid = b.cve_prov";
 		
 		DatabaseHlper dbh = new DatabaseHlper();
-		 return dbh.seleccionarvideojuegos(query);
+		List<Videojuego> Listaobj = dbh.seleccionarvideojuegos(query,Videojuego.class);
+		// return 
+		return Listaobj;
 	}
 	
 	public static Videojuego seleccionarvid(int cve) throws SQLException

@@ -10,6 +10,6 @@
 <body>
 aqui es:<br>
          <%=exception.getMessage()%>
-		<%=exception.getCause().getMessage()%>
+		
 </body>
 </html>

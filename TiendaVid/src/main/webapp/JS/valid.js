@@ -19,7 +19,7 @@ function validacion2()
 	 }
 	 else
 	 {
-		document.forms[0].action = "ModificarVideojuego.jsp?cve="+n1+"&tit="+n2+"&pre="+n3+"&cvep="+n4+"&inventario="+n5;
+		document.forms[0].action = "ModificarVideojuego.do?cve="+n1+"&tit="+n2+"&pre="+n3+"&cvep="+n4+"&inventario="+n5;
 		document.forms[0].method= "post";
 		document.forms[0].submit();
 		alert("todo correcto");
@@ -45,7 +45,7 @@ function validacion2()
 	 }
 	 else
 	 {
-		document.forms[0].action = "InsertarVideojuego.jsp?cve="+n1+"&tit="+n2+"&pre="+n3+"&cvep="+n4+"&inventario="+n5;
+		document.forms[0].action = "InsertarVideojuego.do?cve="+n1+"&tit="+n2+"&pre="+n3+"&cvep="+n4+"&inventario="+n5;
 		document.forms[0].method= "post";
 		document.forms[0].submit();
 		alert("todo correcto");
