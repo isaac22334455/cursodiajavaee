@@ -27,18 +27,19 @@ public class ControladorVideojuegos extends HttpServlet
 		RequestDispatcher despachador = null;//atiende estas peticiones el despachador
 		if(request.getServletPath().equals("/mostrarvideojuegos.do"))// se captura el servletpat la ruta de la cual viene la peticion
 		{
-			request.getRequestDispatcher(accion.getAccion("mostrarvideojuegos.do").ejecutar(
-					request, response)).forward(request, response);
+			despachador=request.getRequestDispatcher(accion.getAccion("mostrarvideojuegos.do").ejecutar(
+					request, response));
+			despachador.forward(request, response);
 		}
 		else if(request.getServletPath().equals("/FormInsertarVideojuego.do"))
-		{		
-			request.getRequestDispatcher(accion.getAccion("FormularioInsertarVideojuego.do").ejecutar(request, response)).forward(
-					request, response);
+		{	
+			despachador=request.getRequestDispatcher(accion.getAccion("FormularioInsertarVideojuego.do").ejecutar(request, response));
+			despachador.forward(request, response);
 		}
 		else if(request.getServletPath().equals("/FormModificarVideojuego.do"))
 		{
-			request.getRequestDispatcher(accion.getAccion("FormularioModificarVideojuego.do").ejecutar(request, response)).forward(
-					request, response);
+			despachador=request.getRequestDispatcher(accion.getAccion("FormularioModificarVideojuego.do").ejecutar(request, response));
+			despachador.forward(request, response);
 		}
 		else if(request.getServletPath().equals("/InsertarVideojuego.do"))
 		{		

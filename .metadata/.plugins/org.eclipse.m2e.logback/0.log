@@ -3528,3 +3528,31 @@
 2023-06-21 16:42:54,417 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
 2023-06-21 16:42:54,418 [Worker-53: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2023-06-21 16:42:54,418 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:12:13,242 [Worker-58: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:12:13,243 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:12:13,245 [Worker-58: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:12:13,246 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:19:11,083 [Worker-60: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:19:11,084 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:19:11,086 [Worker-60: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:19:11,086 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:19:38,641 [Worker-61: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:19:38,642 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:19:38,644 [Worker-61: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:19:38,644 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:21:39,453 [Worker-58: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:21:39,453 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:21:39,454 [Worker-58: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:21:39,455 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:22:27,988 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:22:27,989 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:22:27,990 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:22:27,990 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:23:11,800 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:23:11,801 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:23:11,803 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:23:11,803 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources
+2023-06-21 17:23:26,396 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:23:26,397 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/main/resources
+2023-06-21 17:23:26,398 [Worker-64: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-06-21 17:23:26,399 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/TiendaVid/src/test/resources

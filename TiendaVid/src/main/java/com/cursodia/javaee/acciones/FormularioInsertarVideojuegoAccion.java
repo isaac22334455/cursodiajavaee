@@ -22,7 +22,6 @@ public class FormularioInsertarVideojuegoAccion extends Accion
 			e.printStackTrace();
 		}
 		request.setAttribute("listaprovedores",listaprovedores);
-		// TODO Auto-generated method stub
 		return "FormInsertarVideojuego.jsp";
 	}
 
