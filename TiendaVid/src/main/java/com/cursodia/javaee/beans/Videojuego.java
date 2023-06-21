@@ -119,12 +119,18 @@ public class Videojuego
 		}	   
 	}
 	
-	public static int actuaizarVideojuego(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
+	public static void actuaizarVideojuego(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
 	{
 		String query="UPDATE videojuegos SET tit_vid='"+titulo+"',pre_vid="+precio+",cveprov_vid="+cvep+",inv_vid="+inv+" WHERE cve_vid="+cve+"";
 		DatabaseHlper dbh = new DatabaseHlper();
-		int n=dbh.modificarVideojuego(query);
-		return n;
+		dbh.modificarVideojuego(query);	
+	}
+	public static void EliminarVideojuego(int cve) throws SQLException, DataBaseException
+	{
+		String query="DELETE FROM videojuegos WHERE cve_vid="+cve+"";
+		DatabaseHlper dbh = new DatabaseHlper();
+		dbh.EliminarVideojuego(query);
+		
 	}
 
 }

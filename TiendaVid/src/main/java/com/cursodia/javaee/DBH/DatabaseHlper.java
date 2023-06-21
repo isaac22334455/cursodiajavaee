@@ -20,7 +20,7 @@ public class DatabaseHlper<T> //<T>UTILIZAR GENERICOS
 	private static final String Usuario="root";
 	private static final String Clave="";
 	
-	public int modificarVideojuego(String query) throws SQLException, DataBaseException 
+	public void modificarVideojuego(String query) throws SQLException, DataBaseException 
 	{
 		  Connection con=null;
 		  Statement stm =null;
@@ -31,7 +31,7 @@ public class DatabaseHlper<T> //<T>UTILIZAR GENERICOS
 			Class.forName(Driver);
 			con= DriverManager.getConnection(Url,Usuario,Clave);
 			stm=con.createStatement();
-			filas = stm.executeUpdate(query);	
+			stm.executeUpdate(query);	
 		 }catch(ClassNotFoundException e)
 		   {
 		 	  System.out.println("error al cargar: "+e.getMessage()); 
@@ -47,7 +47,35 @@ public class DatabaseHlper<T> //<T>UTILIZAR GENERICOS
 		 	   //if(stm != null)stm.close();
 		 	   //if(con != null)con.close(); 
 		   }
-		return filas;
+	}
+	
+	public void EliminarVideojuego(String query) throws SQLException, DataBaseException 
+	{
+		  Connection con=null;
+		  Statement stm =null;
+		 
+		  int filas=0;
+		try
+		{
+			Class.forName(Driver);
+			con= DriverManager.getConnection(Url,Usuario,Clave);
+			stm=con.createStatement();
+			stm.executeUpdate(query);	
+		 }catch(ClassNotFoundException e)
+		   {
+		 	  System.out.println("error al cargar: "+e.getMessage()); 
+		 	  throw new DataBaseException("error al cargar la clase",e);
+		   }
+		   catch(SQLException e)
+		   {
+		 	   System.out.println("error al acceder"+e.getMessage()); 
+		 	  throw new DataBaseException("error de SQL",e);
+		   }
+		   finally
+		   {
+		 	   //if(stm != null)stm.close();
+		 	   //if(con != null)con.close(); 
+		   }
 	}
 	
 	public List<Videojuego> seleccionarvideojuego(String query)throws SQLException, DataBaseException
