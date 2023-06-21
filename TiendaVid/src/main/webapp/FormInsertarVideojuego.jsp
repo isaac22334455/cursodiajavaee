@@ -3,6 +3,7 @@
 <%@ page import="com.cursodia.javaee.beans.Videojuego"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Objects"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- para usar las funciones c -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html =lang "es">
@@ -15,126 +16,105 @@
 
 </head>
 <body>
- <%
- String clave = request.getParameter("CVE");
- if(Objects.isNull(clave))
- {%>
-	 <div class="container">
-	  <h1 class="mt-5">FORMULARIO ALTA VIDEOJUEGOS</h1>
-	  <hr><br>
-	  <form class="form-group" action="InsertarVideojuego.do" method="GET">
-	    <div class="row">
-	      <div class="col-md-4">
-	        <div class="form-group">
-	          <label for="cve">CLAVE:</label><br>
-	          <input type="text" id="cve" name="cve" class="form-control"><br>
-	        </div>
-	      </div>
-	      <div class="col-md-4">
-	        <div class="form-group">
-	          <label for="tit">TITULO:</label><br>
-	          <input type="text" id="tit" name="tit" class="form-control"><br>
-	        </div>
-	      </div>
-	      <div class="col-md-4">
-	        <div class="form-group">
-	          <label for="pre">PRECIO:</label><br>
-	          <input type="number" id="pre" name="pre" class="form-control"><br>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="row">
-	      <div class="col-md-6">
-	        <div class="form-group">
-	          <label for="prov">PROVEEDOR:</label><br>
-	          <select class="form-select" name="cvep"id="cvep">
-	            <% 
-	            List<Proveedor> lista = (List<Proveedor>)request.getAttribute("listaprovedores");
-	              for (Proveedor v:lista)
-	              { %>
-	                <option value="<%= v.getCve_prov() %>"><%= v.getNom_prov()%></option>   
-	              <% }
-	            %>
-	          </select>
-	        </div>
-	      </div>
-	      <div class="col-md-6">
-	        <div class="form-group">
-	          <label for="inv">INVENTARIO:</label><br>
-	          <input type="text" id="inv" name="inv" class="form-control"><br><br>
-	        </div>
-	      </div>
-	    </div>
-	    <button type="submit"class="btn btn-dark">ACEPTAR</button>
-	  </form>
-	</div> 
- <%}
- else
- {
-	 //int cve= Integer.parseInt(clave);
-	 Videojuego v=(Videojuego)request.getAttribute("vid");
-	 %> 
-	 <div class="container">
-	  <h1 class="mt-5">FORMULARIO ALTA VIDEOJUEGOS</h1>
-	  <hr><br>
-	  <form class="form-group" action="ModificarVideojuego.do" method="GET">
-	    <div class="row">
-	      <div class="col-md-4">
-	        <div class="form-group">
-	          <label for="cve">CLAVE:</label><br>
-	          <input type="text" id="cve" name="cve"value="<%= v.getcve_vid() %>" class="form-control"><br>
-	        </div>
-	      </div>
-	      <div class="col-md-4">
-	        <div class="form-group">
-	          <label for="tit">TITULO:</label><br>
-	          <input type="text" id="tit" name="tit"value="<%= v.gettit_vid() %>" class="form-control"><br>
-	        </div>
-	      </div>
-	      <div class="col-md-4">
-	        <div class="form-group">
-	          <label for="pre">PRECIO:</label><br>
-	          <input type="number" id="pre" name="pre" value="<%= v.getpre_vid() %>"class="form-control"><br>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="row">
-	      <div class="col-md-6">
-	        <div class="form-group">
-	          <label for="prov">PROVEEDOR:</label><br>
-	          <select class="form-select" name="cvep"id="cvep">
-	                 <% 
-	            List<Proveedor> lista = (List<Proveedor>)request.getAttribute("listaprovedores");
-	              for (Proveedor v2:lista)
-	              { 
-	                 if(v2.getCve_prov()==v.getcveprov_vid())
-	                 {%>
-	                	 <option value="<%= v2.getCve_prov()%>"><%= v2.getNom_prov()%></option>  
-	                 <%}
-	                  
-	               }
-	              for (Proveedor v2 : lista) {
-	            	    if (v2.getCve_prov() != v.getcveprov_vid()) { // Ignorar la coincidencia previa
-	            	  %>
-	            	      <option value="<%= v2.getCve_prov() %>"><%= v2.getNom_prov() %></option>  
-	            	  <% }
-	            	  }
-	            %>
-	          </select>
-	        </div>
-	      </div>
-	      <div class="col-md-6">
-	        <div class="form-group">
-	          <label for="inv">INVENTARIO:</label><br>
-	          <input type="text" id="inv" name="inv"value="<%= v.getinv_vid() %>" class="form-control"><br><br>
-	        </div>
-	      </div>
-	    </div>
-	    <button type="submit" class="btn btn-dark">ACEPTAR</button>
-	  </form>
-	</div> 
- <%}
- 
- %>
+<c:if test="${empty param.CVE}">
+	<div class="container">
+		<h1 class="mt-5">FORMULARIO ALTA VIDEOJUEGOS</h1>
+		<hr><br>
+		<form class="form-group" action="InsertarVideojuego.do" method="GET">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="cve">CLAVE:</label><br>
+						<input type="text" id="cve" name="cve" class="form-control"><br>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="tit">TITULO:</label><br>
+						<input type="text" id="tit" name="tit" class="form-control"><br>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="pre">PRECIO:</label><br>
+						<input type="number" id="pre" name="pre" class="form-control"><br>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="prov">PROVEEDOR:</label><br>
+						<select class="form-select" name="cvep" id="cvep">
+							<c:forEach var="v" items="${listaprovedores}">
+								<option value="${v.cve_prov}">${v.nom_prov}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="inv">INVENTARIO:</label><br>
+						<input type="text" id="inv" name="inv" class="form-control"><br><br>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-dark">ACEPTAR</button>
+		</form>
+	</div>
+</c:if>
+<c:if test="${not empty param.CVE}">
+	<div class="container">
+		<h1 class="mt-5">FORMULARIO ALTA VIDEOJUEGOS</h1>
+		<hr><br>
+		<form class="form-group" action="ModificarVideojuego.do" method="GET">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="cve">CLAVE:</label><br>
+						<input type="text" id="cve" name="cve" value="${vid.cve_vid}" class="form-control"><br>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="tit">TITULO:</label><br>
+						<input type="text" id="tit" name="tit" value="${vid.tit_vid}" class="form-control"><br>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="pre">PRECIO:</label><br>
+						<input type="number" id="pre" name="pre" value="${vid.pre_vid}" class="form-control"><br>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="prov">PROVEEDOR:</label><br>
+						<select class="form-select" name="cvep" id="cvep">
+							<c:forEach var="v" items="${listaprovedores}">
+								<c:if test="${v.cve_prov == vid.cveprov_vid}">
+									<option value="${v.cve_prov}" selected>${v.nom_prov}</option>
+								</c:if>
+								<c:if test="${v.cve_prov != vid.cveprov_vid}">
+									<option value="${v.cve_prov}">${v.nom_prov}</option>
+								</c:if>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="inv">INVENTARIO:</label><br>
+						<input type="text" id="inv" name="inv" value="${vid.inv_vid}" class="form-control"><br><br>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-dark">ACEPTAR</button>
+		</form>
+	</div>
+</c:if>
+
 </body>
 </html>

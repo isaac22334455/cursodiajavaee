@@ -14,6 +14,7 @@
 <%@page import="java.util.List" %>
 <%@ page import="com.cursodia.javaee.beans.Videojuego"%>
 <%@ page import="com.cursodia.javaee.beans.Proveedor"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container">
 <br>
@@ -22,13 +23,9 @@
   <div class="col">
     <select class="form-select bg-dark text-light" name="cvep" id="cvep">
       <option value="todos">Mostrar todos</option>
-      <% 
-      List<Proveedor> lista = (List<Proveedor>)request.getAttribute("listaprovedores");
-        for (Proveedor v:lista)
-        { %>
-          <option value="<%= v.getNom_prov() %>"><%= v.getNom_prov() %></option>   
-        <% }
-      %>
+      <c:forEach var="proveedor" items="${listaprovedores}">
+         <option value="${proveedor.nom_prov}"><c:out value="${proveedor.nom_prov}" /></option>
+      </c:forEach>
     </select>
   </div>
   <div class="col">
@@ -49,22 +46,17 @@
   </tr>
   </thead>
   <tbody>
-  <% 	
-	  List<Videojuego> lista2 = (List<Videojuego>)request.getAttribute("listaVideojuegos");
-	  for(Videojuego v:lista2)
-	  {%>
-	  <tr class="table-dark">
-	  <td align="center"><%=v.getcve_vid()%></td>
-	  <td align="center"><%=v.gettit_vid()%></td>
-	  <td align="right"> <%=v.getpre_vid()%></td>
-	  <td align="center"><%=v.getprovedor()%></td>
-	  <td align="center"><%=v.getinv_vid()%></td>
-	  <td align="center"><a type="button"class="btn btn-primary" href="FormInsertarVideojuego.do?CVE=<%=v.getcve_vid()%>"><i class="fas fa-pencil-alt"></i> </a> </td>
-	  <td align="center"><a type="button"class="btn btn-primary" href="FormInsertarVideojuego.do?CVE=<%=v.getcve_vid()%>"><i class="fas fa-trash-alt"></i> </a> </td>
-	   </tr> 
-	     
-	  <% }
-%>
+ <c:forEach var="v" items="${listaVideojuegos}">
+    <tr class="table-dark">
+        <td align="center"><c:out value="${v.cve_vid}" /></td>
+        <td align="center"><c:out value="${v.tit_vid}" /></td>
+        <td align="right"><c:out value="${v.pre_vid}" /></td>
+        <td align="center"><c:out value="${v.provedor}" /></td>
+        <td align="center"><c:out value="${v.inv_vid}" /></td>
+        <td align="center"><a type="button" class="btn btn-primary" href="FormInsertarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-pencil-alt"></i></a></td>
+        <td align="center"><a type="button" class="btn btn-primary" href="FormInsertarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-trash-alt"></i></a></td>
+    </tr>
+</c:forEach>
 </tbody>
 </table>
 <a type="button"class="btn btn-dark" href="FormInsertarVideojuego.do">INSERTAR VIDEOJUEGO</a>
