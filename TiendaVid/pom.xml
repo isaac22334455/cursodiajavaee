@@ -25,6 +25,21 @@
     <artifactId>jstl</artifactId><!--se cambio los nombres del groupid y artifactid porque no funcionaba bien-->
     <version>1.2</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>6.1.5.Final</version>
+    <type>pom</type>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>6.1.7.Final</version>
+</dependency>
+
   </dependencies>
   <build>
     <plugins>

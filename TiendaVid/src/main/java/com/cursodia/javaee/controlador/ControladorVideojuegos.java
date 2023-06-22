@@ -23,35 +23,13 @@ public class ControladorVideojuegos extends HttpServlet
 	//este do obtiene una peticion y una respuesta de los tipos que se muestra
 	protected void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException
 	{
+		//se aplico reflexion
+		//se respeta el principio -OCP-
+		String url= request.getServletPath();
 		Accion accion = null;// instansiamos la abstracta
 		RequestDispatcher despachador = null;//atiende estas peticiones el despachador
-		if(request.getServletPath().equals("/mostrarvideojuegos.do"))// se captura el servletpat la ruta de la cual viene la peticion
-		{
-			despachador=request.getRequestDispatcher(accion.getAccion("mostrarvideojuegos.do").ejecutar(
-					request, response));
-			despachador.forward(request, response);
-		}
-		else if(request.getServletPath().equals("/FormInsertarVideojuego.do"))
-		{	
-			despachador=request.getRequestDispatcher(accion.getAccion("FormularioInsertarVideojuego.do").ejecutar(request, response));
-			despachador.forward(request, response);
-		}
-		else if(request.getServletPath().equals("/FormModificarVideojuego.do"))
-		{
-			despachador=request.getRequestDispatcher(accion.getAccion("FormularioModificarVideojuego.do").ejecutar(request, response));
-			despachador.forward(request, response);
-		}
-		else if(request.getServletPath().equals("/InsertarVideojuego.do"))
-		{		
-			   response.sendRedirect(accion.getAccion("InsertarVideojuego.do").ejecutar(request, response));	
-	    }
-		else if(request.getServletPath().equals("/ModificarVideojuego.do"))
-		{  
-			response.sendRedirect(accion.getAccion("ModificarVideojuego.do").ejecutar(request, response));	
-		}
-		else if(request.getServletPath().equals("/EliminarVideojuego.do"))
-		{  
-			response.sendRedirect(accion.getAccion("EliminarVideojuego.do").ejecutar(request, response));	
-		}
+		accion= Accion.getAccion(url);
+		despachador= request.getRequestDispatcher(accion.ejecutar(request, response));
+		despachador.forward(request, response);
 	}	
 }

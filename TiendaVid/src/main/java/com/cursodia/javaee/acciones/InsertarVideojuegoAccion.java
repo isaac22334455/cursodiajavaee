@@ -25,7 +25,7 @@ public class InsertarVideojuegoAccion extends Accion
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		return "mostrarvideojuegos.do";//retorna un String lo que se espera en el string el componente o la llamada que va a ejecutar
+		return "MostrarVideojuego.do";//retorna un String lo que se espera en el string el componente o la llamada que va a ejecutar
 		            // despues de regresar de este.
 	}
 

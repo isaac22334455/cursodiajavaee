@@ -20,7 +20,7 @@ public class BorrarVideojuegoAccion extends Accion
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 return "mostrarvideojuegos.do";
+		 return "MostrarVideojuego.do";
 	}
 	
 

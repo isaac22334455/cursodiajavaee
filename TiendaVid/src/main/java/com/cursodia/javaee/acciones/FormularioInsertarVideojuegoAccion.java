@@ -22,7 +22,7 @@ public class FormularioInsertarVideojuegoAccion extends Accion
 			e.printStackTrace();
 		}
 		request.setAttribute("listaprovedores",listaprovedores);
-		return "FormInsertarVideojuego.jsp";
+		return "FormularioInsertarVideojuego.jsp";
 	}
 
 }

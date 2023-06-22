@@ -25,7 +25,7 @@ public class ModificarVideojuegoAccion extends Accion
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "mostrarvideojuegos.do";
+		return "MostrarVideojuego.do";
 	}
 
 }

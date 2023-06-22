@@ -28,7 +28,7 @@ public class FormularioModificarVideojuegoAccion extends Accion
 		}
 		request.setAttribute("vid",vid);//se le asigna un atributo para acceder a el y otro atributo		
 		request.setAttribute("listaprovedores",listaprovedores);
-		return "FormInsertarVideojuego.jsp";
+		return "FormularioInsertarVideojuego.jsp";
 	}
 
 }

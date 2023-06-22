@@ -53,13 +53,13 @@
         <td align="right"><c:out value="${v.pre_vid}" /></td>
         <td align="center"><c:out value="${v.provedor}" /></td>
         <td align="center"><c:out value="${v.inv_vid}" /></td>
-        <td align="center"><a type="button" class="btn btn-primary" href="FormModificarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-pencil-alt"></i></a></td>
-        <td align="center"><a type="button" class="btn btn-primary" href="EliminarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-trash-alt"></i></a></td>
+        <td align="center"><a type="button" class="btn btn-primary" href="FormularioModificarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-pencil-alt"></i></a></td>
+        <td align="center"><a type="button" class="btn btn-primary" href="BorrarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-trash-alt"></i></a></td>
     </tr>
 </c:forEach>
 </tbody>
 </table>
-<a type="button"class="btn btn-dark" href="FormInsertarVideojuego.do">INSERTAR VIDEOJUEGO</a>
+<a type="button"class="btn btn-dark" href="FormularioInsertarVideojuego.do">INSERTAR VIDEOJUEGO</a>
 </div>
 </body>
 </html>
