@@ -51,7 +51,7 @@
         <td align="center"><c:out value="${v.cve_vid}" /></td>
         <td align="center"><c:out value="${v.tit_vid}" /></td>
         <td align="right"><c:out value="${v.pre_vid}" /></td>
-        <td align="center"><c:out value="${v.provedor}" /></td>
+        <td align="center"><c:out value="${v.cveprov_vid}" /></td>
         <td align="center"><c:out value="${v.inv_vid}" /></td>
         <td align="center"><a type="button" class="btn btn-primary" href="FormularioModificarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-pencil-alt"></i></a></td>
         <td align="center"><a type="button" class="btn btn-primary" href="BorrarVideojuego.do?CVE=${v.cve_vid}"><i class="fas fa-trash-alt"></i></a></td>

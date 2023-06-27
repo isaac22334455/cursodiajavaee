@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+
+<session-factory>
+<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+<property name="connection.url">jdbc:mysql://localhost/gamers</property>
+<property name="connection.username">root</property>
+<property name="connection.password"></property>
+<property name="connection.pool_size">5</property><!-- limita numero de conexiones simultaneas -->
+<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+<property name="show_sql">true</property><!-- modo debug para que nos muestre las transacciones que lanza hivernate en la consola cuando sale a prod se pone en false -->
+<mapping resource="com/cursodia/javaee/beans/Videojuego.xml" />
+<mapping resource="com/cursodia/javaee/beans/Proveedor.xml" />
+</session-factory>
+
+</hibernate-configuration>

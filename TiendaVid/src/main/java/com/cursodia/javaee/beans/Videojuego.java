@@ -4,8 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import com.cursodia.javaee.DBH.DataBaseException;
 import com.cursodia.javaee.DBH.DatabaseHlper;
+import com.cursodia.javaee.DBH.HibernateHelper;
 public class Videojuego 
 {
 	private int cve_vid;
@@ -74,38 +80,41 @@ public class Videojuego
 		return cve_vid;
 	}
 	
-	
-	//public static ResultSet buscarTodoslosProvedores() throws SQLException
-	//{
-	//	String query = "SELECT DISTINCT cveprov_vid FROM videojuegos";
-	//	DatabaseHlper dbh = new DatabaseHlper();
-	//	return dbh.seleccionarvideojuegos(query);	
-	//}
 	public static void insertar(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
-	{
+	{	
 		 String query = "INSERT INTO videojuegos(cve_vid,tit_vid,pre_vid,cveprov_vid,inv_vid) VALUES ";
 		 query +="("+cve+",'"+titulo+"',"+precio+","+cvep+","+inv+")";
-		 DatabaseHlper dbh = new DatabaseHlper();
-		 dbh.modificarVideojuego(query);
+		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
+		 Session session = factoriaS.openSession();
+		 Transaction transaccion = session.beginTransaction();
+		 try {
+		        session.createNativeQuery(query).executeUpdate();
+		        transaccion.commit();
+		    } catch (Exception e) {
+		        transaccion.rollback();
+		        throw e;
+		    } finally {
+		        session.close();
+		    }
 	}
 	public static List<Videojuego> buscartodos() throws SQLException, DataBaseException
 	{
-		String query ="SELECT a.cve_vid, a.tit_vid, b.nom_prov provedor, a.pre_vid, a.inv_vid, a.cveprov_vid FROM videojuegos a INNER JOIN proveedores b ON a.cveprov_vid = b.cve_prov";
-		
-		DatabaseHlper dbh = new DatabaseHlper();
-		List<Videojuego> Listaobj = dbh.seleccionarvideojuegos(query,Videojuego.class);
-		// return 
-		return Listaobj;
+		SessionFactory factoriaS= HibernateHelper.getsessionfactory();
+		Session session = factoriaS.openSession();
+		List<Videojuego> lista = session.createQuery("from Videojuego videojuegos").list();
+		session.close();
+		return lista;
 	}
 	
 	public static Videojuego seleccionarvid(int cve) throws SQLException
 	{
 	   String query = "SELECT * FROM videojuegos WHERE cve_vid="+cve;
-	   DatabaseHlper dbh = new DatabaseHlper();
+	   SessionFactory factoriaS= HibernateHelper.getsessionfactory();
+	   Session session = factoriaS.openSession();
 	   List<Videojuego> lista = null;
 	   
 	   try {
-		    lista = dbh.seleccionarvideojuego(query);
+		  lista= session.createNativeQuery(query, Videojuego.class).list();
 		} catch (Exception e) {
 		    // Manejo de la excepción
 		    e.printStackTrace();
@@ -121,16 +130,35 @@ public class Videojuego
 	
 	public static void actuaizarVideojuego(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
 	{
+		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
+		 Session session = factoriaS.openSession();
 		String query="UPDATE videojuegos SET tit_vid='"+titulo+"',pre_vid="+precio+",cveprov_vid="+cvep+",inv_vid="+inv+" WHERE cve_vid="+cve+"";
-		DatabaseHlper dbh = new DatabaseHlper();
-		dbh.modificarVideojuego(query);	
+		Transaction transaccion = session.beginTransaction();
+		 try {
+		        session.createNativeQuery(query).executeUpdate();
+		        transaccion.commit();
+		    } catch (Exception e) {
+		        transaccion.rollback();
+		        throw e;
+		    } finally {
+		        session.close();
+		    }
 	}
 	public static void EliminarVideojuego(int cve) throws SQLException, DataBaseException
 	{
+		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
+		 Session session = factoriaS.openSession();
 		String query="DELETE FROM videojuegos WHERE cve_vid="+cve+"";
-		DatabaseHlper dbh = new DatabaseHlper();
-		dbh.EliminarVideojuego(query);
-		
+		Transaction transaccion = session.beginTransaction();
+		 try {
+		        session.createNativeQuery(query).executeUpdate();
+		        transaccion.commit();
+		    } catch (Exception e) {
+		        transaccion.rollback();
+		        throw e;
+		    } finally {
+		        session.close();
+		    }	
 	}
 
 }

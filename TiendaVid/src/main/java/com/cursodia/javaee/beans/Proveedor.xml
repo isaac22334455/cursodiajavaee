@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping package="com.cursodia.javaee.beans">
+	<class name="Proveedor" table="proveedores">
+		<id name="cve_prov" type="int"/>
+		<property name="nom_prov" type="string" column="nom_prov"/>
+	</class>
+</hibernate-mapping>
