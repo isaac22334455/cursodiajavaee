@@ -4,23 +4,48 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
 import org.hibernate.query.Query;
 
 import com.cursodia.javaee.DBH.DataBaseException;
 import com.cursodia.javaee.DBH.DatabaseHlper;
 import com.cursodia.javaee.DBH.HibernateHelper;
+
+@Entity
+@Table(name="videojuegos")
 public class Videojuego 
 {
+	@Id
+	@Column(name="cve_vid")
 	private int cve_vid;
 	private String tit_vid;
 	private float pre_vid;
+	@ManyToOne
+	@JoinColumn(name="cveprov_vid",referencedColumnName="cve_prov", insertable=false,updatable=false,nullable=false)
+	private Proveedor prov;//un proveedor para muchos videojuegos
+	public Proveedor getProveedor()
+	{
+		return prov;
+		
+	}
+	public void setProveedor(Proveedor prov)//para que hibernate inyecte sus instancias de proveedor
+	{
+		this.prov=prov;
+	}
 	private int cveprov_vid;
 	private int inv_vid;
 	
-	private String provedor;
+	
 	
 	public Videojuego()
 	{}	
@@ -33,25 +58,10 @@ public class Videojuego
 		this.inv_vid = inv_vid;
 	}
 	
-	public Videojuego(int cve_vid, String tit_vid, float pre_vid,String provedor, int inv_vid) 
-	{
-		this.cve_vid = cve_vid;
-		this.tit_vid = tit_vid;
-		this.pre_vid = pre_vid;		
-		this.inv_vid = inv_vid;
-		this.provedor=provedor;
-	}
-	
-	
 	public void setcve_vid(int cve_vid) {
 		this.cve_vid = cve_vid;
 	}
-	public String getprovedor() {
-		return provedor;
-	}
-	public void setprovedor(String provedor) {
-		this.provedor = provedor;
-	}
+	
 	public String gettit_vid() {
 		return tit_vid;
 	}
@@ -101,7 +111,8 @@ public class Videojuego
 	{
 		SessionFactory factoriaS= HibernateHelper.getsessionfactory();
 		Session session = factoriaS.openSession();
-		List<Videojuego> lista = session.createQuery("from Videojuego videojuegos").list();
+		Query consulta = session.createQuery("from Videojuego videojuegos");
+		List<Videojuego> lista=consulta.list();
 		session.close();
 		return lista;
 	}

@@ -215,7 +215,7 @@ public class DatabaseHlper<T> //<T>UTILIZAR GENERICOS
 		    rs= stm.executeQuery(query);
 		    while(rs.next())
 		    {
-		    	lista.add(new Proveedor(rs.getInt("cve_prov"),rs.getString("nom_prov")));
+		    	//lista.add(new Proveedor(rs.getInt("cve_prov"),rs.getString("nom_prov")));
 		    }
 		   }catch(ClassNotFoundException e)
 		   {

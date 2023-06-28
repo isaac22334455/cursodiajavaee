@@ -29,15 +29,14 @@
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
-    <version>6.1.5.Final</version>
-    <type>pom</type>
+    <version>5.6.3.Final</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
 <dependency>
-    <groupId>org.hibernate.orm</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>6.1.7.Final</version>
+    <groupId>javax.persistence</groupId>
+    <artifactId>javax.persistence-api</artifactId><!--persistensia con hivernate para las anotaciones-->
+    <version>2.2</version>
 </dependency>
 
   </dependencies>
