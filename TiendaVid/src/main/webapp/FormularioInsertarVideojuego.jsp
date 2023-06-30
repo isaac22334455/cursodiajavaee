@@ -72,7 +72,7 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="cve">CLAVE:</label><br>
-						<input type="text" id="cve" name="cve" value="${vid.cve_vid}" class="form-control"><br>
+						<input  type="text" id="cve" name="cve" value="${vid.cve_vid}" class="form-control" readonly><br>
 					</div>
 				</div>
 				<div class="col-md-4">

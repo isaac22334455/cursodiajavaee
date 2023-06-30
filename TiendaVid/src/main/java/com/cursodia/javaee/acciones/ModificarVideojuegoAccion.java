@@ -20,7 +20,7 @@ public class ModificarVideojuegoAccion extends Accion
 		   int cvep = Integer.parseInt(request.getParameter("cvep"));
 		   int inventario=Integer.parseInt(request.getParameter("inv"));
 		   try {
-			Videojuego.actuaizarVideojuego(cve, titulo, precio, cvep, inventario);
+			Videojuego.insertar(cve, titulo, precio, cvep, inventario);
 		} catch (SQLException | DataBaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

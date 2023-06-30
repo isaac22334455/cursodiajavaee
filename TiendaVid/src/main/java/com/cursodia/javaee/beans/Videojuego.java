@@ -6,15 +6,20 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Persistence;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
+import org.hibernate.annotations.Fetch;
 import org.hibernate.query.Query;
 
 import com.cursodia.javaee.DBH.DataBaseException;
@@ -32,7 +37,8 @@ public class Videojuego
 	private float pre_vid;
 	@ManyToOne
 	@JoinColumn(name="cveprov_vid",referencedColumnName="cve_prov", insertable=false,updatable=false,nullable=false)
-	private Proveedor prov;//un proveedor para muchos videojuegos
+	//por cada videojuego crea un "PROXI" de proveedor
+	private Proveedor prov;//un proveedor para muchos videojuegos 
 	public Proveedor getProveedor()
 	{
 		return prov;
@@ -92,84 +98,44 @@ public class Videojuego
 	
 	public static void insertar(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
 	{	
-		 String query = "INSERT INTO videojuegos(cve_vid,tit_vid,pre_vid,cveprov_vid,inv_vid) VALUES ";
-		 query +="("+cve+",'"+titulo+"',"+precio+","+cvep+","+inv+")";
-		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
-		 Session session = factoriaS.openSession();
-		 Transaction transaccion = session.beginTransaction();
-		 try {
-		        session.createNativeQuery(query).executeUpdate();
-		        transaccion.commit();
-		    } catch (Exception e) {
-		        transaccion.rollback();
-		        throw e;
-		    } finally {
-		        session.close();
-		    }
+		  EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+		  EntityManager em = emf.createEntityManager();
+		  EntityTransaction tx =null;
+		  tx= em.getTransaction();
+		  tx.begin();
+		  em.merge(new Videojuego(cve,titulo,precio,cvep,inv));
+		  tx.commit();
+		  em.close();
 	}
 	public static List<Videojuego> buscartodos() throws SQLException, DataBaseException
 	{
-		SessionFactory factoriaS= HibernateHelper.getsessionfactory();
-		Session session = factoriaS.openSession();
-		Query consulta = session.createQuery("from Videojuego videojuegos");
-		List<Videojuego> lista=consulta.list();
-		session.close();
-		return lista;
+	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+	  EntityManager em = emf.createEntityManager();
+	  TypedQuery<Videojuego> query =em.createQuery("SELECT V FROM Videojuego V JOIN FETCH V.prov",Videojuego.class);
+      List<Videojuego>lista = query.getResultList();
+	  em.close();
+	  return lista;
 	}
 	
 	public static Videojuego seleccionarvid(int cve) throws SQLException
 	{
-	   String query = "SELECT * FROM videojuegos WHERE cve_vid="+cve;
-	   SessionFactory factoriaS= HibernateHelper.getsessionfactory();
-	   Session session = factoriaS.openSession();
-	   List<Videojuego> lista = null;
-	   
-	   try {
-		  lista= session.createNativeQuery(query, Videojuego.class).list();
-		} catch (Exception e) {
-		    // Manejo de la excepción
-		    e.printStackTrace();
-		}
-
-		if (lista != null && !lista.isEmpty()) {
-		    return lista.get(0);
-		} else {
-		    // Manejo cuando la lista está vacía o es nula
-		    return null; // O puedes lanzar una excepción personalizada, lanzar un mensaje de error, etc.
-		}	   
-	}
-	
-	public static void actuaizarVideojuego(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
-	{
-		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
-		 Session session = factoriaS.openSession();
-		String query="UPDATE videojuegos SET tit_vid='"+titulo+"',pre_vid="+precio+",cveprov_vid="+cvep+",inv_vid="+inv+" WHERE cve_vid="+cve+"";
-		Transaction transaccion = session.beginTransaction();
-		 try {
-		        session.createNativeQuery(query).executeUpdate();
-		        transaccion.commit();
-		    } catch (Exception e) {
-		        transaccion.rollback();
-		        throw e;
-		    } finally {
-		        session.close();
-		    }
+		 EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+		  EntityManager em = emf.createEntityManager();
+		  TypedQuery<Videojuego> query =em.createQuery("SELECT V FROM Videojuego V JOIN FETCH V.prov WHERE V.cve_vid=?1 ",Videojuego.class);
+	      query.setParameter(1,cve);
+		  Videojuego lista = query.getSingleResult();
+		  em.close();
+		  return lista;   
 	}
 	public static void EliminarVideojuego(int cve) throws SQLException, DataBaseException
 	{
-		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
-		 Session session = factoriaS.openSession();
-		String query="DELETE FROM videojuegos WHERE cve_vid="+cve+"";
-		Transaction transaccion = session.beginTransaction();
-		 try {
-		        session.createNativeQuery(query).executeUpdate();
-		        transaccion.commit();
-		    } catch (Exception e) {
-		        transaccion.rollback();
-		        throw e;
-		    } finally {
-		        session.close();
-		    }	
+		 EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+		  EntityManager em = emf.createEntityManager();
+		  EntityTransaction tx =null;
+		  tx= em.getTransaction();
+		  tx.begin();
+		  em.remove(em.merge(seleccionarvid(cve)));	
+		  tx.commit();
+		  em.close();
 	}
-
 }

@@ -19,7 +19,7 @@ public class hivernatepruebas
 		SessionFactory factoria = new Configuration().configure().buildSessionFactory();
 		session=factoria.openSession();
 		transaccion=session.beginTransaction();
-		Videojuego v=new Videojuego(1,"pruebah",12f,1,200);
+		Videojuego v=new Videojuego(1,"pruebcambio",12f,1,200);
 		session.saveOrUpdate(v);
 		transaccion.commit();
 		}
