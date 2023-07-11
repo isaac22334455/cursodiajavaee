@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cursodia.javaee.DBH.DataBaseException;
 import com.cursodia.javaee.beans.Videojuego;
+import com.cursodia.javaee.dao.VideojuegoDAO;
 
 public class InsertarVideojuegoAccion extends Accion
 {
@@ -20,7 +21,7 @@ public class InsertarVideojuegoAccion extends Accion
 		   int cvep = Integer.parseInt(request.getParameter("cvep"));
 		   int inventario=Integer.parseInt(request.getParameter("inv"));
 		   try {
-			Videojuego.insertar(cve, titulo, precio, cvep, inventario);
+			VideojuegoDAO.insertar(cve, titulo, precio, cvep, inventario);
 			} catch (SQLException | DataBaseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

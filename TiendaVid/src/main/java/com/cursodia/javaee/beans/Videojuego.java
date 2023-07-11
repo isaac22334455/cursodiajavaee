@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.Table;
 import javax.persistence.TypedQuery;
 
@@ -96,46 +97,6 @@ public class Videojuego
 		return cve_vid;
 	}
 	
-	public static void insertar(int cve,String titulo,float precio,int cvep, int inv) throws SQLException, DataBaseException
-	{	
-		  EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
-		  EntityManager em = emf.createEntityManager();
-		  EntityTransaction tx =null;
-		  tx= em.getTransaction();
-		  tx.begin();
-		  em.merge(new Videojuego(cve,titulo,precio,cvep,inv));
-		  tx.commit();
-		  em.close();
-	}
-	public static List<Videojuego> buscartodos() throws SQLException, DataBaseException
-	{
-	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
-	  EntityManager em = emf.createEntityManager();
-	  TypedQuery<Videojuego> query =em.createQuery("SELECT V FROM Videojuego V JOIN FETCH V.prov",Videojuego.class);
-      List<Videojuego>lista = query.getResultList();
-	  em.close();
-	  return lista;
-	}
 	
-	public static Videojuego seleccionarvid(int cve) throws SQLException
-	{
-		 EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
-		  EntityManager em = emf.createEntityManager();
-		  TypedQuery<Videojuego> query =em.createQuery("SELECT V FROM Videojuego V JOIN FETCH V.prov WHERE V.cve_vid=?1 ",Videojuego.class);
-	      query.setParameter(1,cve);
-		  Videojuego lista = query.getSingleResult();
-		  em.close();
-		  return lista;   
-	}
-	public static void EliminarVideojuego(int cve) throws SQLException, DataBaseException
-	{
-		 EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
-		  EntityManager em = emf.createEntityManager();
-		  EntityTransaction tx =null;
-		  tx= em.getTransaction();
-		  tx.begin();
-		  em.remove(em.merge(seleccionarvid(cve)));	
-		  tx.commit();
-		  em.close();
-	}
+	
 }

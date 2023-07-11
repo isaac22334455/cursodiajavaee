@@ -4,6 +4,7 @@ INDEX VERSION 1.132+/home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/.me
 1287485911.index
 3549314495.index
 1742621850.index
+2524112564.index
 1865797976.index
 2168726579.index
 4174816771.index
@@ -39,7 +40,6 @@ INDEX VERSION 1.132+/home/isaac/Documentos/CursodiaJavaEE2023/cursodiajavaee/.me
 4219070249.index
 259480475.index
 1997406700.index
-793768175.index
 703154108.index
 2785260761.index
 2824112938.index

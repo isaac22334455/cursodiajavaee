@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cursodia.javaee.beans.Proveedor;
+import com.cursodia.javaee.dao.ProveedorDAO;
 
 public class FormularioInsertarVideojuegoAccion extends Accion
 {
@@ -16,7 +17,7 @@ public class FormularioInsertarVideojuegoAccion extends Accion
 	{
 		List<Proveedor> listaprovedores = null;
 		try {
-			listaprovedores = Proveedor.buscarProvedorCveName();
+			listaprovedores = ProveedorDAO.buscarProvedorCveName();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

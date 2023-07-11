@@ -50,4 +50,5 @@
     <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.DBH.JPAHelper"/>
+    <fullyQualifiedTypeName name="com.cursodia.javaee.dao.VideojuegoDAO"/>
 </qualifiedTypeNameHistroy>

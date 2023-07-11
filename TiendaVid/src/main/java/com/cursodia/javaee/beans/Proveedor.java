@@ -3,11 +3,15 @@ package com.cursodia.javaee.beans;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -84,13 +88,5 @@ public class Proveedor
 		this.cve_prov = cve_prov;
 	}
 
-	public static List<Proveedor> buscarProvedorCveName() throws SQLException
-	{
-		 SessionFactory factoriaS= HibernateHelper.getsessionfactory();
-		 Session session = factoriaS.openSession();
-		 List<Proveedor> lista = session.createQuery("from Proveedor proveedores").list();
-			session.close();
-			return lista;
-	}
-
+	
 }

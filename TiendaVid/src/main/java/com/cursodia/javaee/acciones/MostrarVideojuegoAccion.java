@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.cursodia.javaee.DBH.DataBaseException;
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.beans.Videojuego;
+import com.cursodia.javaee.dao.ProveedorDAO;
+import com.cursodia.javaee.dao.VideojuegoDAO;
 
 public class MostrarVideojuegoAccion extends Accion{
 
@@ -18,8 +20,8 @@ public class MostrarVideojuegoAccion extends Accion{
 		List<Videojuego> listaVideojuegos = null;
 		List<Proveedor> listaprovedores = null;
 		try {
-			listaVideojuegos = Videojuego.buscartodos();
-			listaprovedores= Proveedor.buscarProvedorCveName();
+			listaVideojuegos = VideojuegoDAO.buscartodos();
+			listaprovedores= ProveedorDAO.buscarProvedorCveName();
 		} catch (SQLException | DataBaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
