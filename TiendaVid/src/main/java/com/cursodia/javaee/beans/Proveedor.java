@@ -2,6 +2,7 @@ package com.cursodia.javaee.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,23 +19,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-
-import com.cursodia.javaee.DBH.DatabaseHlper;
-import com.cursodia.javaee.DBH.HibernateHelper;
-
 @Entity
 @Table(name="proveedores")
 public class Proveedor 
 {
 	@Id
 	@PrimaryKeyJoinColumn(name="cve_prov")
-    Integer cve_prov;
+    int cve_prov;
 	String nom_prov;
 	@Fetch(value=FetchMode.SELECT)//COMO SE VAN IR LEYENDO LOS REGISTROS
-	@OneToMany//definir relacion
+	@OneToMany()
 	@JoinColumn(name="cve_prov")
 	//esta ocurriendo algo que se llama proxi en listaVideojuegos,se les dan los canales
 	//no ocupan  todo el recurso pero estan redireccionadas hacia ellas
@@ -54,6 +49,7 @@ public class Proveedor
 		this.imei_prov=imei_prov;
 		this.tel_prov=tel_prov;
 	}
+	
 	public String getNom_prov() {
 		return nom_prov;
 	}

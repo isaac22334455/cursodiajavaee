@@ -1,15 +1,11 @@
 package com.cursodia.javaee.acciones;
-
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.beans.Videojuego;
-import com.cursodia.javaee.dao.ProveedorDAO;
-import com.cursodia.javaee.dao.VideojuegoDAO;
+import com.cursodia.javaee.dao.ProveedorDAOJPAImpl;
+import com.cursodia.javaee.dao.VideojuegoDAOJPAImpl;
 
 public class FormularioModificarVideojuegoAccion extends Accion
 {
@@ -22,9 +18,9 @@ public class FormularioModificarVideojuegoAccion extends Accion
 	    Videojuego vid = null;
 	    List<Proveedor> listaprovedores = null;
 		try {
-			vid = VideojuegoDAO.seleccionarvid(cve);
-			listaprovedores = ProveedorDAO.buscarProvedorCveName();
-		} catch (SQLException e) {
+			vid =new VideojuegoDAOJPAImpl().seleccionar(cve);
+			listaprovedores = ProveedorDAOJPAImpl.buscarProvedorCveName();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

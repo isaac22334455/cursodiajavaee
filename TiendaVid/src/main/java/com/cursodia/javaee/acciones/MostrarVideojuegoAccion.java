@@ -10,7 +10,8 @@ import com.cursodia.javaee.DBH.DataBaseException;
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.beans.Videojuego;
 import com.cursodia.javaee.dao.ProveedorDAO;
-import com.cursodia.javaee.dao.VideojuegoDAO;
+import com.cursodia.javaee.dao.ProveedorDAOJPAImpl;
+import com.cursodia.javaee.dao.VideojuegoDAOJPAImpl;
 
 public class MostrarVideojuegoAccion extends Accion{
 
@@ -20,9 +21,9 @@ public class MostrarVideojuegoAccion extends Accion{
 		List<Videojuego> listaVideojuegos = null;
 		List<Proveedor> listaprovedores = null;
 		try {
-			listaVideojuegos = VideojuegoDAO.buscartodos();
-			listaprovedores= ProveedorDAO.buscarProvedorCveName();
-		} catch (SQLException | DataBaseException e) {
+			listaVideojuegos = new VideojuegoDAOJPAImpl().buscarTodos();
+			listaprovedores = ProveedorDAOJPAImpl.buscarProvedorCveName();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

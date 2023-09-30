@@ -17,8 +17,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container">
+ <nav class="w-100 d-flex mt-4 justify-content-end">
+   <span class="mx-2">
+        <a type="button"class="btn btn-secondary" href="FormularioInsertarProveedor.do">INSERTAR PROVEEDOR</a>
+    </span>
+    <span class="mx-2">
+        <a type="button"class="btn btn-secondary" href="FormularioInsertarVideojuego.do">INSERTAR VIDEOJUEGO</a>
+    </span>
+    <span class="mx-2">
+        <a type="button"class="btn btn-secondary" href="MostrarProveedor.do">MOSTRAR PROVEEDORES</a>
+    </span>
+    <span class="mx-2">
+        <a type="button"class="btn btn-secondary" href="MostrarVideojuego.do">MOSTRAR VIDEOJUEGOS</a>
+    </span>
+ </nav>
+<hr>
 <br>
-<h1>Listado de Videojuegos</h1>
+
  <div class="row">
   <div class="col">
     <select class="form-select bg-dark text-light" name="cvep" id="cvep">
@@ -32,7 +47,7 @@
     <a type="button" onclick="aplicar()" class="btn btn-success"><i class="fas fa-filter"></i></a>
   </div>
   </div>
-<hr>
+<br>
 <table id="tabla" class="table table-bordered ">
  <thead>
     <tr align="center" class="table-dark">
@@ -59,7 +74,7 @@
 </c:forEach>
 </tbody>
 </table>
-<a type="button"class="btn btn-dark" href="FormularioInsertarVideojuego.do">INSERTAR VIDEOJUEGO</a>
+
 </div>
 </body>
 </html>
