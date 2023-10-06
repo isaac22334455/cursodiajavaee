@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.cursodia.javaee.IOC.AbstractFactory;
+
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.dao.ProveedorDAOJPAImpl;
 
@@ -18,8 +21,8 @@ public class FormularioModificarProveedorAccion extends Accion
 	    Proveedor prov = null;
 	   
 		try {
-			prov =new ProveedorDAOJPAImpl().seleccionar(cve);
-			//listaprovedores = ProveedorDAO.buscarProvedorCveName();
+			
+			prov =AbstractFactory.getInstance("JDBC").getProveedor().seleccionar(cve);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

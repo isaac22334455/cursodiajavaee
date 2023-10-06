@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cursodia.javaee.DBH.DataBaseException;
+import com.cursodia.javaee.IOC.AbstractFactory;
+import com.cursodia.javaee.IOC.DAOFactory;
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.beans.Videojuego;
 import com.cursodia.javaee.dao.ProveedorDAO;
@@ -21,7 +23,8 @@ public class MostrarVideojuegoAccion extends Accion{
 		List<Videojuego> listaVideojuegos = null;
 		List<Proveedor> listaprovedores = null;
 		try {
-			listaVideojuegos = new VideojuegoDAOJPAImpl().buscarTodos();
+			listaVideojuegos = AbstractFactory.getInstance("JDBC").getVideojuegoDAO()
+					           .buscarTodos();
 			listaprovedores = ProveedorDAOJPAImpl.buscarProvedorCveName();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

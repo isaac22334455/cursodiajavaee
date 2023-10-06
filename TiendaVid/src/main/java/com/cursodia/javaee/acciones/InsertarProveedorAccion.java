@@ -3,6 +3,8 @@ package com.cursodia.javaee.acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cursodia.javaee.IOC.AbstractFactory;
+
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.dao.ProveedorDAOJPAImpl;
 
@@ -17,7 +19,7 @@ public class InsertarProveedorAccion extends Accion
 		   String imei =request.getParameter("imei");
 		   String num = request.getParameter("num");
 		   try {
-			   new ProveedorDAOJPAImpl().insertar(new Proveedor(cve, nom, imei, num));
+			   AbstractFactory.getInstance("JDBC").getProveedor().insertar(new Proveedor(cve, nom, imei, num));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cursodia.javaee.IOC.AbstractFactory;
+
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.beans.Videojuego;
 import com.cursodia.javaee.dao.ProveedorDAO;
@@ -20,7 +22,7 @@ public class MostrarProveedorAccion extends Accion
 		List<Proveedor> listaprovedores = null;
 		try {
 			//listaVideojuegos = new VideojuegoDAOJPAImpl().buscarTodos();
-			listaprovedores= new ProveedorDAOJPAImpl().buscarTodos();
+			listaprovedores= AbstractFactory.getInstance("Hibernate").getProveedor().buscarTodos();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

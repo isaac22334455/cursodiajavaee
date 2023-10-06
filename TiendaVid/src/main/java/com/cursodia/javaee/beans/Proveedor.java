@@ -16,6 +16,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -29,8 +30,8 @@ public class Proveedor
     int cve_prov;
 	String nom_prov;
 	@Fetch(value=FetchMode.SELECT)//COMO SE VAN IR LEYENDO LOS REGISTROS
-	@OneToMany()
-	@JoinColumn(name="cve_prov")
+	//@JoinColumn(name="cve_prov")
+	@OneToMany(mappedBy = "prov", cascade = CascadeType.MERGE)
 	//esta ocurriendo algo que se llama proxi en listaVideojuegos,se les dan los canales
 	//no ocupan  todo el recurso pero estan redireccionadas hacia ellas
 	//las anotaciones de arriva permiten crear estas multiples referencias si no estubieran

@@ -1,6 +1,9 @@
 package com.cursodia.javaee.acciones;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.cursodia.javaee.IOC.AbstractFactory;
+
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.dao.ProveedorDAOJPAImpl;
 
@@ -15,7 +18,8 @@ public class ModificarProveedorAccion extends Accion
 		   String tel = request.getParameter("tel");
 		   System.out.println(cve);
 		   try {
-			  new ProveedorDAOJPAImpl().guardarCambios(new Proveedor(cve, nom, imei, tel));
+			   AbstractFactory.getInstance("JDBC").getProveedor().
+			   guardarCambios(new Proveedor(cve, nom, imei, tel));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

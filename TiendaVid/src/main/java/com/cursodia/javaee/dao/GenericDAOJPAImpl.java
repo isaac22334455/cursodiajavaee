@@ -3,13 +3,13 @@ package com.cursodia.javaee.dao;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+
+import com.cursodia.javaee.DBH.JPAHelper;
 
 public abstract class GenericDAOJPAImpl<T, Id extends Serializable> implements GenericDAO<T,Id>
 {
@@ -24,7 +24,7 @@ public GenericDAOJPAImpl()
     @Override
    public T seleccionar (Id id)
    {
-	   EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+       EntityManagerFactory emf = JPAHelper.getJPAFactorry();//el nombre para identificar la persistencia porque puede haber mas de una
 	   EntityManager manager = emf.createEntityManager();
 	   
 	   T obj = null;
@@ -44,7 +44,8 @@ public GenericDAOJPAImpl()
     @Override
     public List<T> buscarTodos()
     {
-      EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+    	System.out.println(clasedepersistencia.getSimpleName());
+      EntityManagerFactory emf = JPAHelper.getJPAFactorry();//el nombre para identificar la persistencia porque puede haber mas de una
   	  EntityManager em = emf.createEntityManager();
   	  List<T> lista = null;
   	  try
@@ -63,7 +64,7 @@ public GenericDAOJPAImpl()
     @Override
     public void borrar(T objeto)
     {
-    	 EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+    	 EntityManagerFactory emf = JPAHelper.getJPAFactorry();//el nombre para identificar la persistencia porque puede haber mas de una
 		  EntityManager em = emf.createEntityManager();
 		  EntityTransaction tx =null;
 		 
@@ -88,7 +89,7 @@ public GenericDAOJPAImpl()
     @Override
 	public void insertar(T objeto)
 	{
-    	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+    	 EntityManagerFactory emf = JPAHelper.getJPAFactorry();//el nombre para identificar la persistencia porque puede haber mas de una
 		  EntityManager em = emf.createEntityManager();
 		  EntityTransaction tx =null;
 		  
@@ -113,7 +114,7 @@ public GenericDAOJPAImpl()
 	public void guardarCambios(T objeto)
 	{
     	  System.out.println(objeto);
-    	  EntityManagerFactory emf = Persistence.createEntityManagerFactory("javaee22");//el nombre para identificar la persistencia porque puede haber mas de una
+    	  EntityManagerFactory emf = JPAHelper.getJPAFactorry();//el nombre para identificar la persistencia porque puede haber mas de una
 		  EntityManager em = emf.createEntityManager();
 		  EntityTransaction tx =null;
 		  

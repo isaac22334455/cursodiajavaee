@@ -14,11 +14,11 @@
     <welcome-file>MostrarVideojuego.do</welcome-file>
   </welcome-file-list>
   <servlet>
-  		<servlet-name>ControladorVideojuegos</servlet-name>
-  		<servlet-class>com.cursodia.javaee.controlador.ControladorVideojuegos</servlet-class>
+  		<servlet-name>Controlador</servlet-name>
+  		<servlet-class>com.cursodia.javaee.controlador.Controlador</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>ControladorVideojuegos</servlet-name>
+  <servlet-name>Controlador</servlet-name>
   <url-pattern>*.do</url-pattern><!-- todos los que marquen un .do pasaran por ese controlador -->
   </servlet-mapping>
   
