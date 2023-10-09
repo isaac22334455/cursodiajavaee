@@ -34,19 +34,21 @@
 <hr>
 <br>
 
- <div class="row">
-  <div class="col">
-    <select class="form-select bg-dark text-light" name="cvep" id="cvep">
-      <option value="todos">Mostrar todos</option>
-      <c:forEach var="proveedor" items="${listaprovedores}">
-         <option value="${proveedor.nom_prov}"><c:out value="${proveedor.nom_prov}" /></option>
-      </c:forEach>
-    </select>
+ <form action="FiltrarVideojuego.do" method="GET">
+  <div class="row">
+    <div class="col">
+      <select class="form-select bg-dark text-light" name="CVE" id="CVE">
+        <option value="todos">Mostrar todos</option>
+        <c:forEach var="proveedor" items="${listaprovedores}">
+          <option value="${proveedor.cve_prov}"><c:out value="${proveedor.nom_prov}" /></option>
+        </c:forEach>
+      </select>
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-success"><i class="fas fa-filter"></i></button>
+    </div>
   </div>
-  <div class="col">
-    <a type="button" onclick="aplicar()" class="btn btn-success"><i class="fas fa-filter"></i></a>
-  </div>
-  </div>
+</form>
 <br>
 <table id="tabla" class="table table-bordered ">
  <thead>

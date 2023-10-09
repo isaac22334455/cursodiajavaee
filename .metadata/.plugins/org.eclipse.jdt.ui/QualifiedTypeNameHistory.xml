@@ -26,7 +26,6 @@
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-    <fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
     <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.DBH.JPAHelper"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
@@ -37,7 +36,6 @@
     <fullyQualifiedTypeName name="org.hibernate.annotations.CascadeType"/>
     <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
-    <fullyQualifiedTypeName name="com.cursodia.javaee.dao.VideojuegoDAOJPAImpl"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.IOC.videojuegosDAOFactory"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.dao.ProveedorDAOJPAImpl"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.IOC.proveedorDAOFactory"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.beans.Proveedor"/>
     <fullyQualifiedTypeName name="com.cursodia.javaee.dao.ProveedorDAOJDBCIMpl"/>
+    <fullyQualifiedTypeName name="com.cursodia.javaee.dao.VideojuegoDAOJPAImpl"/>
+    <fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
 </qualifiedTypeNameHistroy>

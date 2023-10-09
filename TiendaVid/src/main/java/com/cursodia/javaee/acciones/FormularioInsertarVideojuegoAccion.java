@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cursodia.javaee.IOC.AbstractFactory;
 import com.cursodia.javaee.beans.Proveedor;
 import com.cursodia.javaee.dao.ProveedorDAO;
 import com.cursodia.javaee.dao.ProveedorDAOJPAImpl;
@@ -18,7 +19,7 @@ public class FormularioInsertarVideojuegoAccion extends Accion
 	{
 		List<Proveedor> listaprovedores = null;
 		try {
-			listaprovedores = ProveedorDAOJPAImpl.buscarProvedorCveName();
+			listaprovedores = AbstractFactory.getInstance("JPA").getProveedor().buscarTodos();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

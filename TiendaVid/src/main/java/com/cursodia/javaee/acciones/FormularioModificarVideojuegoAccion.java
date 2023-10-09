@@ -21,7 +21,7 @@ public class FormularioModificarVideojuegoAccion extends Accion
 	    List<Proveedor> listaprovedores = null;
 		try {
 			vid =AbstractFactory.getInstance("JDBC").getVideojuegoDAO().seleccionar(cve);
-			listaprovedores = ProveedorDAOJPAImpl.buscarProvedorCveName();
+			listaprovedores = AbstractFactory.getInstance("JPA").getProveedor().buscarTodos();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

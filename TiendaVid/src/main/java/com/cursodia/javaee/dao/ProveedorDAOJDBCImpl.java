@@ -4,5 +4,4 @@ import com.cursodia.javaee.beans.Proveedor;
 
 public class ProveedorDAOJDBCImpl extends GenericDAOJDBCImpl<Proveedor,Integer> implements ProveedorDAO
 {
-
 }
